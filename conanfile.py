@@ -11,7 +11,6 @@ from conans import ConanFile, tools
 from conans.errors import ConanInvalidConfiguration
 from conans.model import Generator
 
-
 class qt(Generator):
     @property
     def filename(self):
@@ -292,7 +291,7 @@ class QtConan(ConanFile):
             self.run("wget -qO- %s.tar.xz | tar -xJ " % url)
         shutil.move("qt-everywhere-src-%s" % self.version, "qt5")
 
-        for patch in ["3f9c9db.diff"]:
+        for patch in ["3f9c9db.diff", "relative_paths.diff"]:
             tools.patch("qt5/qtbase", patch)
 
     def _xplatform(self):

@@ -586,7 +586,7 @@ class QtConan(ConanFile):
             f.write('[Paths]\nPrefix = ..')
         
         # patch for 5.13 to remove the hardcoded paths in cmake files.
-        patchFiles(os.path.join(self.package_folder, "lib", "cmake"), product='qt_framework')
+        patchFiles(self.package_folder, product='qt_framework')
 
     def package(self):
         self.copy("bin/qt.conf", src="qtbase")
